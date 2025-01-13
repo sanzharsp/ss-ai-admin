@@ -6,22 +6,6 @@ export default {
     theme: {
         extend: {
             colors: {
-                primaryBorderColor: 'var(--primary-border-color)',
-                secondaryBorderColor: 'var(--secondary-border-color)',
-                inactiveBorderColor: 'var(--inactive-border-color)',
-                accentBorderColor: 'var(--accent-border-color)',
-                errorBorderColor: 'var(--error-border-color)',
-                primaryBackgroundColor: 'var(--primary-background-color)',
-                secondaryBackgroundColor: 'var(--secondary-background-color)',
-                inactiveBackgroundColor: 'var(--inactive-background-color)',
-                accentBackgroundColor: 'var(--accent-background-color)',
-                errorBackgroundColor: 'var(--error-background-color)',
-                primaryColor: 'var(--primary-color)',
-                secondaryColor: 'var(--secondary-color)',
-                inactiveColor: 'var(--inactive-color)',
-                accentColor: 'var(--accent-color)',
-                errorColor: 'var(--error-color)',
-
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
@@ -61,6 +45,16 @@ export default {
                     '3': 'hsl(var(--chart-3))',
                     '4': 'hsl(var(--chart-4))',
                     '5': 'hsl(var(--chart-5))'
+                },
+                sidebar: {
+                    DEFAULT: 'hsl(var(--sidebar-background))',
+                    foreground: 'hsl(var(--sidebar-foreground))',
+                    primary: 'hsl(var(--sidebar-primary))',
+                    'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+                    accent: 'hsl(var(--sidebar-accent))',
+                    'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+                    border: 'hsl(var(--sidebar-border))',
+                    ring: 'hsl(var(--sidebar-ring))'
                 }
             },
             backgroundImage: {
@@ -70,12 +64,32 @@ export default {
                 'glow-blue': '0 0 20px rgba(0, 123, 255, 0.6)'
             },
             animation: {
-                'spin-slow': 'spin 3s linear infinite'
+                'spin-slow': 'spin 3s linear infinite',
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out'
             },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)'
+            },
+            keyframes: {
+                'accordion-down': {
+                    from: {
+                        height: '0'
+                    },
+                    to: {
+                        height: 'var(--radix-accordion-content-height)'
+                    }
+                },
+                'accordion-up': {
+                    from: {
+                        height: 'var(--radix-accordion-content-height)'
+                    },
+                    to: {
+                        height: '0'
+                    }
+                }
             }
         }
     },

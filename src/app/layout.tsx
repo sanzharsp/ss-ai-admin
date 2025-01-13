@@ -7,6 +7,7 @@ import {ToastContainer} from "react-toastify";
 import React from "react";
 import {getMessages} from "next-intl/server";
 import {AllProviders} from "@/core/providers/AllProviders";
+import { Toaster } from "@/shared/components/ui/toaster";
 
 
 const geistSans = Geist({
@@ -22,12 +23,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     title: {
-        default: "Next Intl Auth",
-        template: `%s - Next Intl Auth`,
+        default: "SS AI ADMIN",
+        template: `%s - SS AI ADMIN`,
     },
     metadataBase: new URL("https://github.com/Sayyat/next-intl-auth"),
-    description: "A modern boilerplate for building scalable web applications with **Next.js 15**, **TypeScript**, and integrated **i18n** (internationalization). Perfect for developers looking for authentication (Next-Auth), schema validation (Zod), and responsive designs (Tailwind CSS).\n",
+    description: "Админ панель для SS AI",
     keywords: [
+        "SS",
+        "AI",
+        "ADMIN",
+        "SS AI",
+        "SS AI ADMIN",
         "Next.js",
         "React",
         "TypeScript",
@@ -37,24 +43,24 @@ export const metadata: Metadata = {
     ],
     authors: [
         {
-            name: "ZIZ INC.",
+            name: "Sanzhar Sapar & Sayat Raykul",
             url: "https://web.ziz.kz/",
         },
     ],
-    creator: "ZIZ INC.",
+    creator: "Sanzhar Sapar & Sayat Raykul",
     openGraph: {
         type: "website",
         locale: "en_US",
         url: "https://next-intl-auth-mu.vercel.app",
-        title: "Your Project Name",
-        description: "A brief description of your project for Open Graph.",
-        siteName: "Next Intl Auth",
+        title: "SS AI ADMIN",
+        description: "Админ панель для SS AI",
+        siteName: "SS AI ADMIN",
         images: [
             {
                 url: "https://yourprojectdomain.com/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Next Intl Auth",
+                alt: "SS AI ADMIN",
             },
         ],
     },
@@ -95,6 +101,7 @@ export default async function RootLayout({
                         "font-bold text-secondaryColor flex items-center p-4 "
                     }
                 />
+                <Toaster />
             </AllProviders>
         </NextIntlClientProvider>
         </body>

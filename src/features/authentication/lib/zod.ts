@@ -34,3 +34,25 @@ export const createSignInSchema = async () => {
         password: z.string().min(8, t("auth.errors.password.min")),
     });
 };
+
+
+
+export const createChangePasswordSchema = async () => {
+    const t = await getTranslator();
+  
+    return z
+      .object({
+        password: z
+          .string()
+          .min(8, t('auth.errors.password.min'))
+          .regex(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+            t('auth.errors.password.weak')
+          ),
+        confirmPassword: z.string(),
+      })
+      .refine((data) => data.password === data.confirmPassword, {
+        message: t('auth.errors.password.mismatch'),
+        path: ['confirmPassword'],
+      });
+  };

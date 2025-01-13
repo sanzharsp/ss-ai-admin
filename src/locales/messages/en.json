@@ -9,13 +9,15 @@
           "signOut": "Sign Out",
           "user": "User",
           "openMenu": "Menu",
-          "closeMenu": "Close"
+          "closeMenu": "Close",
+          "profile": "Profile",
+          "settings": "Settings"
         },
         "Footer": {
           "version": "Version: 1.0.0",
           "termsOfService": "Terms of Service",
           "privacyPolicy": "Privacy Policy",
-          "createdBy": "Created with ❤\uFE0F by ZIZ INC."
+          "createdBy": "Created with ❤️‍🔥 and simplicity, using the <library>shadcn</library>."
         }
       },
       "page": {
@@ -29,6 +31,90 @@
         "previous": "Previous",
         "next": "Next",
         "submit": "Submit"
+      },
+      "profile": {
+        "yes": "Yes",
+        "no": "No",
+        "noAuth": "Not authorized",
+        "loadErroProfile": "Error loading profile",
+        "authRequred": "Authorization required",
+        "loading": "Loading...",
+        "unknown": "Unknown",
+        "profileInfo": "Profile information",
+        "edit": "Edit",
+        "saveHelpMessage": "Edit the fields and save.",
+        "settings": "Settings",
+        "basicDetail": "Basic details about the user.",
+        "editProfile": "Edit profile",
+        "field": "Field",
+        "value": "Value",
+        "accountSettings": "Account settings",
+        "manageAccount": "Manage your account settings.",
+        "changePassword": "Change password",
+        "passwordHelp": "Password must be at least 8 characters long, include uppercase and lowercase letters, numbers, and special characters.",
+        "passwordHeader": "Important !!!",
+        "togglePasswordVisibility": "View password",
+        "error": {
+          "loadProfile": "Error loading profile",
+          "updateProfile": "Error updating profile",
+          "validationError": "Validation error",
+          "unkownError": "Unknown error",
+          "unkownErrorMessage": "An error occurred while changing the password."
+        },
+        "editFields": {
+          "email": "Email",
+          "id": "Identifier",
+          "firstname": "First name",
+          "lastname": "Last name",
+          "is_active": "Active",
+          "is_superuser": "Superuser",
+          "is_verificate": "Verified",
+          "updated_at": "Updated",
+          "created_at": "Created",
+          "password": "Password",
+          "changePassword": "Repeat password"
+        },
+        "button": {
+          "cancel": "Cancel",
+          "save": "Save",
+          "deleteProfile": "Delete profile"
+        },
+        "success": {
+          "refreshPassword": "Password successfully changed",
+          "refreshPasswordHeader": "Password Change",
+          "refreshProfile": "Profile successfully updated",
+          "refreshProfileHeader": "Profile Update"
+        }
+      },
+      "settings": {
+        "saveMessageHeader": "Data Saving",
+        "saveMessageBody": "Settings have been successfully saved!",
+        "updateMessageHeader": "Data Update",
+        "updateMessageBody": "Settings have been successfully updated!",
+        "settings": "Model Settings",
+        "systemPrompt": "System Text",
+        "aiModel": "AI Model",
+        "aiModelSelect": "Select a Model",
+        "temperature": "Model Temperature",
+        "maxTokens": "Maximum Number of Tokens",
+        "active": "Active",
+        "manualMode": "Manual Mode",
+        "prompt": "Enter the system prompt",
+        "button": {
+          "save": "Save"
+        },
+        "error": {
+          "data": "Data Error",
+          "saveData": "Error saving the settings."
+        },
+        "helpText": {
+          "systemPromptText": "Describe how the system should behave. For example: 'Respond in a friendly and humorous manner.'",
+          "aiModelHelp": "Choose an AI model. Models differ in speed and accuracy.",
+          "temperatureHelp": "Adjust the creativity of the responses. Use values from 0 (maximum accuracy) to 1 (maximum creativity).",
+          "maxTokensHelp": "Set the maximum length of the response. For example, 200 for standard answers.",
+          "activeHelp": "Turn on to use these settings. If turned off, the system will respond that it is under maintenance.",
+          "manualMode": "When manual mode is enabled, all users will write to the administrator, and the administrator will answer their questions instead of them."
+        }
       }
     },
     "(authentication)": {
@@ -69,8 +155,7 @@
     }
   },
   "features": {
-    "authentication": {
-    }
+    "authentication": {}
   },
   "shared": {
     "components": {
@@ -79,6 +164,13 @@
         "en": "English",
         "ru": "Russian",
         "kk": "Kazakh"
+      },
+      "app-sidebar": {
+        "home": "Home",
+        "settings": "Settings",
+        "calendar": "Calendar",
+        "search": "Search",
+        "title": "Administration"
       }
     }
   },

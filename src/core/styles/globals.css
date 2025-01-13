@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+    --primary-border-color: #cdb4db;
+    --secondary-border-color: #ffc8dd;
+    --inactive-border-color: #6064AB;
+    --primary-background-color: rgb(255, 255, 255);
+    --secondary-background-color: rgba(0, 0, 0, 0.1);
+    --inactive-background-color: rgba(236, 236, 236, 0.35);
+    --button-background: #d9d9d94d;
+    --button-background: rgba(217, 217, 217, 0.3);
+    --primary-color: #000000;
+    --secondary-color: rgba(0, 0, 0, 0.7);
+    --inactive-color: rgba(0, 0, 0, 0.2);
+    --accent-color: #65e4ff;
+    --error-color: red;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,110 +27,79 @@
 
 @layer base {
     :root {
-        /* Custom Semantic Variables */
-        --primary-border-color: rgb(34, 41, 47); /* Neutral Dark Gray */
-        --secondary-border-color: rgb(200, 215, 230); /* Light Cool Gray */
-        --inactive-border-color: rgb(144, 164, 174); /* Muted Blue-Gray */
-        --accent-border-color: rgb(37, 99, 235); /* Vibrant Blue */
-        --error-border-color: rgb(239, 68, 68); /* Strong Red */
-
-        --primary-background-color: rgb(248, 250, 252); /* Soft Off-White */
-        --secondary-background-color: rgba(241, 245, 249, 0.7); /* Frosted Cool White */
-        --inactive-background-color: rgba(226, 232, 240, 0.5); /* Light Muted Blue */
-        --accent-background-color: rgb(37, 99, 235); /* Vibrant Blue */
-        --error-background-color: rgb(255, 71, 71); /* Vibrant Red */
-
-        --primary-color: rgb(29, 32, 37); /* Dark Neutral */
-        --secondary-color: rgba(75, 85, 99, 0.7); /* Muted Gray */
-        --inactive-color: rgb(156, 163, 175); /* Light Cool Gray */
-        --accent-color: rgb(255, 255, 255); /* Pure White for Text on Accent */
-        --error-color: rgb(245, 101, 101); /* Soft Red */
-
-
-        /* Shadcn UI Variables */
         --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
+        --foreground: 224 71.4% 4.1%;
         --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
+        --card-foreground: 224 71.4% 4.1%;
         --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
+        --popover-foreground: 224 71.4% 4.1%;
+        --primary: 220.9 39.3% 11%;
+        --primary-foreground: 210 20% 98%;
+        --secondary: 220 14.3% 95.9%;
+        --secondary-foreground: 220.9 39.3% 11%;
+        --muted: 220 14.3% 95.9%;
+        --muted-foreground: 220 8.9% 46.1%;
+        --accent: 220 14.3% 95.9%;
+        --accent-foreground: 220.9 39.3% 11%;
         --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --radius: 0.5rem;
-
-        /* Charts */
+        --destructive-foreground: 210 20% 98%;
+        --border: 216 14% 93%;
+        --input: 220 13% 91%;
+        --ring: 224 71.4% 4.1%;
         --chart-1: 12 76% 61%;
         --chart-2: 173 58% 39%;
         --chart-3: 197 37% 24%;
         --chart-4: 43 74% 66%;
         --chart-5: 27 87% 67%;
+        --radius: 0.5rem;
+        --sidebar-background: 216 14% 93%;
+        --sidebar-foreground: 240 5.3% 26.1%;
+        --sidebar-primary: 240 5.9% 10%;
+        --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-accent: 240 4.8% 95.9%;
+        --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-border: 220 13% 91%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+
     }
 
     .dark {
-        /* Dark Mode Custom Semantic Variables */
-        --primary-border-color: rgb(60, 66, 74); /* Deep Neutral Gray */
-        --secondary-border-color: rgb(89, 97, 108); /* Subtle Mid Gray */
-        --inactive-border-color: rgb(70, 76, 84); /* Muted Cool Gray */
-        --accent-border-color: rgb(56, 189, 248); /* Bright Cyan */
-        --error-border-color: rgb(239, 68, 68); /* Strong Red */
-
-        --primary-background-color: rgb(17, 24, 39); /* Very Dark Blue-Gray */
-        --secondary-background-color: rgba(31, 41, 55, 0.7); /* Frosted Dark Blue-Gray */
-        --inactive-background-color: rgba(51, 65, 85, 0.5); /* Muted Blue-Gray */
-        --accent-background-color: rgb(56, 189, 248); /* Bright Cyan */
-        --error-background-color: rgb(220, 38, 38); /* Vibrant Red */
-
-        --primary-color: rgb(229, 231, 235); /* Light Neutral */
-        --secondary-color: rgba(156, 163, 175, 0.8); /* Muted Cool Gray */
-        --inactive-color: rgba(107, 114, 128, 0.7); /* Softer Gray */
-        --accent-color: rgb(17, 24, 39); /* Very Dark Blue-Gray for Text on Accent */
-        --error-color: rgb(252, 165, 165); /* Soft Red */
-
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
+        --background: 224 71.4% 4.1%;
+        --foreground: 210 20% 98%;
+        --card: 224 71.4% 4.1%;
+        --card-foreground: 210 20% 98%;
+        --popover: 224 71.4% 4.1%;
+        --popover-foreground: 210 20% 98%;
+        --primary: 210 20% 98%;
+        --primary-foreground: 220.9 39.3% 11%;
+        --secondary: 215 27.9% 16.9%;
+        --secondary-foreground: 210 20% 98%;
+        --muted: 215 27.9% 16.9%;
+        --muted-foreground: 217.9 10.6% 64.9%;
+        --accent: 215 27.9% 16.9%;
+        --accent-foreground: 210 20% 98%;
         --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-
-        /* Charts for Dark Mode */
+        --destructive-foreground: 210 20% 98%;
+        --border: 215 27.9% 16.9%;
+        --input: 215 27.9% 16.9%;
+        --ring: 216 12.2% 83.9%;
         --chart-1: 220 70% 50%;
         --chart-2: 160 60% 45%;
         --chart-3: 30 80% 55%;
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
+        --sidebar-background: 240 5.9% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
     }
+}
 
-    /* Debugging Borders */
-    .debug-border * {
-        border: 1px solid red !important;
-    }
-
-    /* Base Styling */
+@layer base {
     * {
         @apply border-border;
     }
