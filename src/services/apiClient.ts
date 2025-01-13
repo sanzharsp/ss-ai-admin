@@ -1,39 +1,33 @@
-import axios from "axios";
-import {env} from "@/core/data/env/client";
-import {ApiResponse} from "@/types/api";
-import {getTranslator} from "@/locales/config/translation";
+"use client"; // Директива говорит Next.js, что этот код исполняется в браузере (клиент)
+import { getSession } from "next-auth/react";
 
-export const apiClient = axios.create({
-    baseURL: env.NEXT_PUBLIC_API_URL, // Replace with your API URL
-    headers: {
-        "Content-Type": "application/json",
-    },
+import axios from "axios";
+
+// Здесь только публичная переменная
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
+export const clientApiClient = axios.create({
+  baseURL,
+  headers: { "Content-Type": "application/json" },
 });
 
-
-// Centralized error extraction
-export function extractErrorMessage(
-    error: unknown,
-    translator: (key: string) => string
-): string {
-    if (axios.isAxiosError(error) && error.response?.data) {
-        const {message} = error.response.data;
-        return message || translator("services.unknownError");
-    }
-    return translator("services.serverError");
-}
-
-// Handle API responses
-export async function handleResponse<T>(
-    request: Promise<any>,
-    translator?: (key: string) => string
-): Promise<ApiResponse<T>> {
-    const t = translator || (await getTranslator());
+// Интерцептор для клиента
+clientApiClient.interceptors.request.use(
+  async (config) => {
     try {
-        const response = await request;
-        return {success: true, data: response.data as T};
+      // В клиентском окружении (браузере) используем next-auth/react
+      const session = await getSession();
+      if (session?.user?.access_token) {
+        config.headers.Authorization = `Bearer ${session?.user?.access_token}`;
+      }
+
+      return config;
     } catch (error) {
-        console.error("API Error:", error);
-        return {success: false, error: extractErrorMessage(error, t)};
+      console.error("Ошибка при получении сессии на клиенте:", error);
+      return config;
     }
-}
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);

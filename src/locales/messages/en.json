@@ -177,6 +177,8 @@
   "auth": {
     "passwordAndConfirmMismatch": "Password and confirmation do not match!",
     "unknownError": "Unknown error",
+    "adminAlreadyExist": "A user with this email address already exists",
+    "badCredentials": "User not found in system",
     "errors": {
       "username": {
         "min": "Username must be at least 3 characters long.",

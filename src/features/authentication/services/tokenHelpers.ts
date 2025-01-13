@@ -1,7 +1,7 @@
 import {cookies} from "next/headers";
 
-const ACCESS_TOKEN_KEY = "accessToken";
-const REFRESH_TOKEN_KEY = "refreshToken";
+const ACCESS_TOKEN_KEY = "access_token";
+const REFRESH_TOKEN_KEY = "refresh_token";
 // Retrieve the access token from cookies
 export const getAccessToken = async (): Promise<string | null> => {
     const accessToken = (await cookies()).get(ACCESS_TOKEN_KEY)?.value;

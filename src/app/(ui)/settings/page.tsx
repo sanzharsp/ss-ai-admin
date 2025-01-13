@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/shared/components/ui/select";
-import { clientApiClient } from "@/services/apiClinet";
+import { clientApiClient } from "@/services/apiClient";
 import { Settings } from "@/types/user";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Checkbox } from "@/shared/components/ui/checkbox";

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { clientApiClient } from "@/services/apiClinet";
+import { clientApiClient } from "@/services/apiClient";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/components/ui/table";
 // shadcn/ui компоненты
 import { Avatar, AvatarImage, AvatarFallback } from "@/shared/components/ui/avatar";

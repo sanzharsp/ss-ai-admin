@@ -1,12 +1,13 @@
 import NextAuth, {CredentialsSignin} from "next-auth"
 import Credentials from "next-auth/providers/credentials";
 
-import {createSignInSchema, createSignUpSchema} from "@/features/authentication/lib/zod";
+import {createSignUpSchema, createSignInSchema} from "@/features/authentication/lib/zod";
+import {getTranslator} from "@/locales/config/translation";
 import {loginUser, registerUser} from "@/features/authentication/services/authService";
 import {z} from "zod";
 import {jwtDecode} from "jwt-decode";
-import {getTranslator} from "@/locales/config/translation";
-import {ICustomJwtPayload} from "@/features/authentication/type";
+import {CustomJwtPayload} from "@/types/user";
+// import { setAccessToken, setRefreshToken } from "./services/tokenHelpers";
 
 class InvalidLoginError extends CredentialsSignin {
     constructor(message: string) {
@@ -23,7 +24,6 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
             id: "signup",
             name: "signup",
             credentials: {
-                username: {},
                 email: {},
                 password: {},
                 confirm: {},
@@ -39,27 +39,39 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
                         throw new InvalidLoginError(firstError.message || t("auth.unknownError"));
                     }
 
+                    
+
                     // Fallback for unexpected errors
                     throw new InvalidLoginError(t("auth.unknownError"));
                 }
-                const {username, email, password, confirm} = data
+                const {email, password, confirm} = data
 
                 if (password !== confirm) {
                     throw new InvalidLoginError(t("auth.passwordAndConfirmMismatch"))
                 }
 
-                let result = await registerUser(username, email, password);
+                let result = await registerUser(email, password);
 
                 if (!result.success) {
+                    if (result.error?.includes("User with this email already exists")) {
+                        throw new Error("Пользователь с таким email уже существует. Воспользуйтесь другим email или войдите в систему.");
+                      }
                     throw new InvalidLoginError(result.error);
                 }
-                const decodedAccessToken = jwtDecode(result.data.access) as ICustomJwtPayload
+                
+                // await setAccessToken(result.data.access_token);
+                // await setRefreshToken(result.data.refresh_token);
+                const decodedAccessToken = jwtDecode(result.data.access_token) as CustomJwtPayload
                 if (!decodedAccessToken) {
                     throw new InvalidLoginError(t("auth.invalidToken"));
                 }
 
                 console.log({in: 'signup', decodedAccessToken});
-                return decodedAccessToken.user
+                // return decodedAccessToken.user
+                return {
+                    access_token: result.data.access_token, // или как у вас называется
+                    data: decodedAccessToken.user,
+                  };
             },
         }),
         Credentials({
@@ -89,13 +101,23 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
                 if (!result.success) {
                     throw new InvalidLoginError(result.error);
                 }
-                const decodedAccessToken = jwtDecode(result.data.access) as ICustomJwtPayload
+                const decodedAccessToken = jwtDecode(result.data.access_token) as CustomJwtPayload
+                
+
+                // await setAccessToken(result.data.access_token);
+                // await setRefreshToken(result.data.refresh_token);
+    
+
                 if (!decodedAccessToken) {
                     throw new InvalidLoginError(t("auth.invalidToken"));
                 }
-
+                
                 console.log({in: 'login', decodedAccessToken});
-                return decodedAccessToken.user
+                // return decodedAccessToken.user
+                return {
+                    access_token: result.data.access_token, // или как у вас называется
+                    data: decodedAccessToken.user,
+                  };
             },
         })
     ],
@@ -106,12 +128,14 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
         async jwt({token, user, account}) {
             if (account && user) {
                 token.user = user;
+         
             }
             return token;
         },
         async session({session, token}) {
             if (token) {
                 session.user = token.user as any;
+                
             }
             // console.log({ in: 'session', session });
             return session;
